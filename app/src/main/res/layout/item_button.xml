@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <!--<import type="android.support.v4.content.ContextCompat"/>-->
+        <!--ContextCompat.getColor(context, data.colorRes)-->
+
+        <variable
+            name="vm"
+            type="com.example.kenchuang.exam.view.BaseViewModel"/>
+
+        <variable
+            name="data"
+            type="com.example.kenchuang.exam.data.GameDataCenter" />
+    </data>
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    android:background="@color/gray2A"
+    android:layout_marginTop="@dimen/cube_padding"
+    android:layout_weight="1">
+
+            <Button
+                android:id="@+id/clearbutton"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/btn_clear"
+                android:gravity="bottom|center"
+                android:background="@drawable/btn_clear"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="@+id/bottom_bar"
+                android:textSize="18sp"
+                android:textColor="@{vm.indexColumn == data.random_x? @color/white : @color/gray40}"
+                android:padding="10dp"
+                android:enabled="@{vm.indexColumn == data.random_x? true : false}"
+                android:onClick="@{vm::onClear}"
+                />
+</LinearLayout>
+
+</layout>

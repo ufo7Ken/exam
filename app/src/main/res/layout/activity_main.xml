@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="vm"
+            type="com.example.kenchuang.exam.activity.viewmodel.MainViewModel" />
+    </data>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ProgressBar
+            android:id="@+id/progressbar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:max="100"
+            android:backgroundTint="@color/white"
+            android:indeterminateTint="#1a09d6"
+            android:layout_marginTop="-7dp"
+            android:visibility="@{vm.progressBarVisible}"
+            />
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/base_content">
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/til_column"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/til_row"
+                android:hint="@string/text_column"
+                app:errorEnabled="true"
+                errorText="@{vm.column_errormsg}">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/edit_column"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@={vm.column_text}"
+                    android:onTextChanged="@{vm.onColumnTextChanged}"
+                    android:inputType="number"/>
+
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/til_row"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/til_column"
+                app:layout_constraintBottom_toTopOf="@+id/button_send"
+                android:hint="@string/text_row"
+                app:errorEnabled="true"
+                errorText="@{vm.row_errormsg}">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/edit_account"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@={vm.row_text}"
+                    android:onTextChanged="@{vm::onRowTextChanged}"
+                    android:inputType="number"/>
+
+
+            </android.support.design.widget.TextInputLayout>
+
+            <Button
+                android:id="@+id/button_send"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:enabled="@{(vm.row_text.length() > 0 &amp;&amp; vm.column_text.length() > 0) ? true : false}"
+                android:onClick="@{vm::sendForm}"
+                android:text="send"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/til_row" />
+
+        </android.support.constraint.ConstraintLayout>
+
+    </RelativeLayout>
+</layout>

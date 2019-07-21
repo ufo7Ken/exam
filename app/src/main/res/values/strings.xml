@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Exam</string>
+    <string name="text_column">column</string>
+    <string name="text_row">row</string>
+    <string name="text_random">random</string>
+    <string name="text_empty"></string>
+    <string name="btn_clear">确定</string>
+
+</resources>
