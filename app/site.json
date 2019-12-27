@@ -1,7 +1,1 @@
-{
-  "data": [
-  "http://tw.yahoo.com",
-  "http://www.google.com",
-  "http://172.16.16.180:8004"
-  ]
-}
+{"data":["http://tw.yahoo.com","http://www.google.com","http://172.16.16.180:8004"]}
